@@ -1,0 +1,103 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>TrafficMind Control Panel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+
+  <body>
+
+    <h1>🚦 TrafficMind Control Panel</h1>
+
+    <!-- ===== BUTTON PANEL ===== -->
+    <div id="buttons">
+    <button onclick="setActiveButton(this); heavyTraffic()">Heavy Traffic (2 km)</button>
+
+    <button onclick="setActiveButton(this); lowTraffic()">Low Traffic (0.5 km)</button>
+
+    <button onclick="setActiveButton(this); ambulance()">Emergency: Ambulance</button>
+
+    <button onclick="setActiveButton(this); fireTruck()">Emergency: Fire Truck</button>
+
+    <button onclick="setActiveButton(this); accident()">Incident: Accident</button>
+
+    </div>
+
+    <!-- ===== VISUAL DASHBOARD ===== -->
+    <div class="visual-row">
+
+      <!-- Traffic Signal -->
+      <div class="intersection">
+        <div class="road vertical"></div>
+        <div class="road horizontal"></div>
+
+        <div class="traffic-light intersection-light">
+          <div class="signal red"></div>
+          <div class="signal yellow"></div>
+          <div class="signal green"></div>
+        </div>
+      </div>
+
+      <!-- AQI Meter -->
+      <div class="aqi-container">
+        <div class="aqi-title">Air Quality Index (AQI)</div>
+
+        <div class="aqi-meter">
+          <div class="aqi-fill" id="aqi-fill"></div>
+        </div>
+
+        <div class="aqi-value">
+          AQI: <span id="aqi-number">150</span>
+        </div>
+
+        <div class="aqi-label" id="aqi-label">
+          Moderate
+        </div>
+      </div>
+
+      <!-- Road Panel -->
+      <div class="road-panel">
+        <div class="lane">
+
+          <!-- Normal Traffic -->
+          <div class="vehicle car car1">🚗</div>
+          <div class="vehicle car car2">🚙</div>
+          <div class="vehicle car car3">🚕</div>
+          <div class="vehicle car car4 hidden">🚗</div>
+          <div class="vehicle car car5 hidden">🚙</div>
+
+
+          <!-- Front Car -->
+          <div class="vehicle front-car">🚗</div>
+
+          <!-- Emergency Vehicle -->
+          <div class="vehicle ambulance hidden">🚑</div>
+          <div class="vehicle firetruck hidden">🚒</div>
+          <div class="accident hidden">💥🔥</div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ===== STATUS ===== -->
+    <div id="signal-status">
+      Status: —
+    </div>
+
+    <div id="signal-timer">
+      Next update in —
+    </div>
+
+    <!-- ===== OUTPUT ===== -->
+    <pre id="output">Click a button to see output...</pre>
+
+    <!-- ===== FOOTER ===== -->
+    <div class="footer">
+      AI-assisted adaptive traffic control · Hackathon Prototype
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+  </html>
