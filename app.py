@@ -9,6 +9,9 @@ from flask import Flask, jsonify, request, render_template
 # Create the app
 # DO NOT change this line
 app = Flask(__name__)
+@app.route("/test")
+def test():
+    return"REnder testok"
 # -------------------------------
 # HOME ROUTE (TEST PAGE)
 # -------------------------------
@@ -145,5 +148,10 @@ def incident_detected():
 # -------------------------------
 # START THE SERVER
 # -------------------------------
+import os
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
+
+
